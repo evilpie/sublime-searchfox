@@ -46,4 +46,4 @@ class FindOnSearchfoxCommand(sublime_plugin.TextCommand):
 
             window.open_file(path_with_line, sublime.ENCODED_POSITION | sublime.TRANSIENT)
 
-        window.show_quick_panel([item['name'] for item in items], on_select)
+        window.show_quick_panel([[item['name'], item['line'][0]['path']] for item in items], on_select)
