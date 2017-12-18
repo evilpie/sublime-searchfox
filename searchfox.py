@@ -60,14 +60,11 @@ class FindOnSearchfoxCommand(sublime_plugin.TextCommand):
                 return
 
             item = items[index]
-            print(item)
 
             path = item['line'][0]['path']
+            top_srcdir = find_top_srcdir(window.folders()[0])
 
-            top_srcdic = find_top_srcdir(window.folders()[0])
-            print(top_srcdic)
-
-            full_path = os.path.join(top_srcdic, path)
+            full_path = os.path.join(top_srcdir, path)
             path_with_line = "{}:{}".format(full_path, item['line'][0]['lines'][0]['lno'])
 
             window.open_file(path_with_line, sublime.ENCODED_POSITION | sublime.TRANSIENT)
